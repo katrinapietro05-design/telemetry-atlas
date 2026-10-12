@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "telemetry-event.schema.json",
+  "title": "Telemetry Event",
+  "type": "object",
+  "required": ["event_id", "timestamp", "component", "event_type", "source_class", "integrity_hash"],
+  "properties": {
+    "event_id": {"type": "string", "minLength": 1},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "node": {"type": "string"},
+    "component": {"type": "string"},
+    "event_type": {"type": "string"},
+    "prior_state": {"type": ["string", "null"]},
+    "new_state": {"type": ["string", "null"]},
+    "source_class": {"enum": ["observed", "synthetic", "simulated", "empirical", "unknown"]},
+    "severity": {"enum": ["info", "warning", "error", "critical", "unknown"]},
+    "correlation_id": {"type": ["string", "null"]},
+    "integrity_hash": {"type": "string"},
+    "retention_class": {"type": ["string", "null"]},
+    "review_status": {"enum": ["unreviewed", "reviewed", "disputed", "unknown"]}
+  },
+  "additionalProperties": false
+}
